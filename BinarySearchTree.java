@@ -125,9 +125,45 @@ public class BinarySearchTree<T extends Comparable<T>> {
 			node.value = minValue(node.right);
 
 			node.right = remove(node.right, node.value);
+			
+		node.newHeight;
+		if(node.balanceF == 2) {
+			if(node.right.balanceF == -1) {
+				var C = node.right.left;
+				if (node == root) {
+					root = C;
+				}
+				node.RotduplaEsquerda();
+				return C;
+			}else {
+				var B = node.right;
+				if (node == root) {
+					root = B;
+				}
+				node.RotEsquerdaSimples();
+				return B;
+			}
+		}
+		else if(node.balanceF == -2) {
+			if(node.left.balanceF == 1) {
+				var C = node.left.right;
+				if (node == root) {
+					root = C;
+				}
+				node.RotDuplaDireita();
+				return C;
+			}else {
+				var B = node.left;
+				if (node == root) {
+					root = B;
+				}
+				node.RotDireitaSimples();
+				return B;
+			}
 		}
 		return node;
 	}
+	
 
 	public T minValue(Node<T> node) {
 		T minValue = node.value;
